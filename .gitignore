@@ -1,0 +1,7 @@
+# Crash log
+crash.log
+
+# Cache objects
+packer_cache/
+
+.DS_Store

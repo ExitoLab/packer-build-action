@@ -1,0 +1,20 @@
+name: 'Packer build on AWS'
+author: 'Ige Adetokunbo Temitayo <igeadetokunbo@gmail.com>>'
+description: 'Run packer build on a template file on AWS'
+inputs:
+  templateFile:
+    description: 'Packer template file to use for packer build'
+    required: true
+  varFile:
+    description: 'Variable file to use for packer build'
+    required: false
+  workingDir:
+    description: 'Working Directory where the packer template and var file reside. A default directory will be specify if nothing is added.'
+    required: false
+    default: '.'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+branding:
+  icon: 'check-circle'
+  color: 'blue'

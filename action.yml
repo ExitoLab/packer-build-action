@@ -1,5 +1,5 @@
 name: 'Packer build on AWS'
-author: 'Ige Adetokunbo Temitayo <igeadetokunbo@gmail.com>>'
+author: 'Ige Adetokunbo Temitayo <igeadetokunbo@gmail.com>'
 description: 'Run packer build on a template file on AWS'
 inputs:
   templateFile:

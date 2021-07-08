@@ -18,12 +18,12 @@ fi
 
 set +e
 # Run Packer fmt
-PACKER_FMT_OUTPUT=$(sh -c "packer init ${INPUT_TEMPLATEFILE}" 2>&1)
+PACKER_FMT_OUTPUT=$(sh -c "packer init -var-file=${INPUT_VARFILE} ${INPUT_TEMPLATEFILE}" 2>&1)
 BUILD_SUCCESS=$?
 echo "$PACKER_FMT_OUTPUT"
 
 # Run Packer validate
-PACKER_VALIDATE_OUTPUT=$(sh -c "packer validate ${INPUT_TEMPLATEFILE}" 2>&1)
+PACKER_VALIDATE_OUTPUT=$(sh -c "packer validate -var-file=${INPUT_VARFILE} ${INPUT_TEMPLATEFILE}" 2>&1)
 BUILD_SUCCESS=$?
 echo "$PACKER_VALIDATE_OUTPUT"
 

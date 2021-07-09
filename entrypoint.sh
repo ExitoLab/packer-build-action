@@ -26,14 +26,14 @@ fi
 
 set +e
 # Run Packer validate
-echo "Running packer validate"
 PACKER_VALIDATE_OUTPUT=$(sh -c "packer validate ${variableCommand} ${INPUT_TEMPLATEFILE}" 2>&1)
 echo "$PACKER_VALIDATE_OUTPUT"
+echo "Ending running packer validate ..."
 set -e
 
 set +e
 # Run Packer build
-echo "Running packer build"
+echo "Beginning running packer build ..."
 BUILD_OUTPUT=$(sh -c "packer build ${variableCommand} ${INPUT_TEMPLATEFILE}" 2>&1)
 BUILD_SUCCESS=$?
 echo "$BUILD_OUTPUT"

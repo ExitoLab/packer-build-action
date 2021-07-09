@@ -16,25 +16,25 @@ if ([ -f "$INPUT_VARFILE" ] && [ $INPUT_VARFILE != *.json ]); then
     exit 1
 fi
 
-#check if variable file is supply
-if [ -f "$INPUT_VARFILE" ]
+# #check if variable file is supply
+if [ -f "{$INPUT_VARFILE}" ]
 then
-  buildCommand="packer validate -var-file=${INPUT_VARFILE} ${INPUT_TEMPLATEFILE}"
+    variableCommand="-var-file=${INPUT_VARFILE}"
 else
-  buildCommand="packer validate ${INPUT_TEMPLATEFILE}"
+    variableCommand=""
 fi
 
 set +e
 # Run Packer validate
-PACKER_VALIDATE_OUTPUT=$(sh -c "$buildCommand" 2>&1)
-BUILD_VALIDATE_SUCCESS=$?
+echo "Running packer validate"
+PACKER_VALIDATE_OUTPUT=$(sh -c "packer validate ${variableCommand} ${INPUT_TEMPLATEFILE}" 2>&1)
 echo "$PACKER_VALIDATE_OUTPUT"
 set -e
-exit $BUILD_VALIDATE_SUCCESS
 
 set +e
 # Run Packer build
-BUILD_OUTPUT=$(sh -c "$buildCommand" 2>&1)
+echo "Running packer build"
+BUILD_OUTPUT=$(sh -c "packer build ${variableCommand} ${INPUT_TEMPLATEFILE}" 2>&1)
 BUILD_SUCCESS=$?
 echo "$BUILD_OUTPUT"
 set -e

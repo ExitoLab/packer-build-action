@@ -27,9 +27,12 @@ fi
 set +e
 # Run Packer validate
 PACKER_VALIDATE_OUTPUT=$(sh -c "$buildCommand" 2>&1)
-BUILD_SUCCESS=$?
+BUILD_VALIDATE_SUCCESS=$?
 echo "$PACKER_VALIDATE_OUTPUT"
+set -e
+exit $BUILD_VALIDATE_SUCCESS
 
+set +e
 # Run Packer build
 BUILD_OUTPUT=$(sh -c "$buildCommand" 2>&1)
 BUILD_SUCCESS=$?

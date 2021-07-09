@@ -5,23 +5,21 @@ set -e
 cd "${INPUT_WORKINGDIR:-.}"
 
 # Find the template file
-if ([ $INPUT_TEMPLATEFILE != *.json ] && [ ! -f "$INPUT_TEMPLATEFILE" ]); then
+if ( [ ! -f "${INPUT_TEMPLATEFILE}" ] &&  $INPUT_TEMPLATEFILE != *.json ] ]); then
     echo "${INPUT_TEMPLATEFILE} does not exit in the working directory (${INPUT_WORKINGDIR})"
     exit 1
 fi
 
 # Find the var file file and it should be a json file
-if ([ -f "$INPUT_VARFILE" ] && [ $INPUT_VARFILE != *.json ]); then
-    echo "${INPUT_VARFILE} must be a valid json file in the working directory (${INPUT_WORKINGDIR})"
+if [[ ! -f "${INPUT_VARFILE}" ]] && [[ "${INPUT_VARFILE}" != *.json ]]; then
+    echo "$INPUT_VARFILE not found in the working directory (${INPUT_WORKINGDIR})"
     exit 1
 fi
 
 # #check if variable file is supply
-if [ -f "{$INPUT_VARFILE}" ]
-then
-    variableCommand="-var-file=${INPUT_VARFILE}"
-else
-    variableCommand=""
+variableCommand=""
+if [ -f "{$INPUT_VARFILE}" ]; then
+    variableCommand="-var-file=$INPUT_VARFILE"
 fi
 
 set +e

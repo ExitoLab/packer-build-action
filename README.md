@@ -19,3 +19,31 @@ This action runs packer build on AWS
 ## Outputs
 
 ## Example usage
+
+To configure this action simply add the following lines to your .github/workflows/packer-build.yml workflow file:
+
+```
+name: Run packer build on AWS
+
+on:
+  push:
+    branches:
+        - 'master'
+jobs:
+  packer_build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Packer build
+        uses: ExitoLab/packer_build_action_aws@fix/debug
+        with:
+          templateFile: 'packer-template.json'
+          workingDir: '.'
+          varFile: 'packer-vars.json'
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: us-east-1
+```
+
+Pls note: Don't add the `varFile` if you do not have the file in your working directory

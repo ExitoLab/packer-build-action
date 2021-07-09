@@ -4,17 +4,16 @@ This action runs packer build on AWS
 
 ## Inputs Variables
 
-### `workingDir`
+| Name | Description | Required | Default |
+| --- | --- | --- | --- |
+| `workingDir` | The directory where the packer template and var file reside. Default is `"."` | no | yes |
+| `templateFile` | The packer template file to use for packer build.| yes | no |
+| `varFile` | The variable file to use for packer build. | no | no |
 
-**Optional** The directory where the packer template and var file reside. Default is `"."`.
 
-### `templateFile`
+## Providing Secrets to Packer
 
-**Required** Packer template file to use for packer build.
-
-### `varFile`
-
-**Optional** Variable file to use for packer build.
+Add the secrets using github secrets. Under your repository name, click Settings. In the left sidebar, click Secrets.
 
 ## Outputs
 

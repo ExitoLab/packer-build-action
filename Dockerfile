@@ -1,7 +1,7 @@
 FROM hashicorp/packer:1.7.3
 
-LABEL "repository" = "https://github.com/ExitoLab/packer_build_action_aws"
-LABEL "homepage" = "https://github.com/ExitoLab/packer_build_action_aws"
+LABEL "repository" = "https://github.com/ExitoLab/packer-build-action"
+LABEL "homepage" = "https://github.com/ExitoLab/packer-build-action"
 LABEL "maintainer" = "Ige Adetokunbo Temitayo <igeadetokunbo@gmail.com>"
 
 LABEL "com.github.actions.name" = "Packer build on AWS"

@@ -34,7 +34,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Packer build
-        uses: ExitoLab/packer_build_action_aws@v2.9
+        uses: ExitoLab/packer_build_action_aws@v0.2.10
         with:
           templateFile: 'packer-template.json'
           workingDir: '.'

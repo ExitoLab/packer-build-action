@@ -34,15 +34,14 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Packer build
-        uses: ExitoLab/packer_build_action_aws@v2.8
+        uses: ExitoLab/packer_build_action_aws@v2.9
         with:
           templateFile: 'packer-template.json'
           workingDir: '.'
-          varFile: 'packer-vars.json'
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: us-east-1
 ```
 
-Pls note: Don't add the `varFile` if you do not have the file in your working directory
+Pls note: Add the `varFile` if you do have the file in your working directory

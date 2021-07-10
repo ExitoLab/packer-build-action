@@ -18,7 +18,7 @@ fi
 
 # #check if variable file is supply
 variableCommand=""
-if [ -f "{$INPUT_VARFILE}" ]; then
+if [ -f "$INPUT_VARFILE" ]; then
     variableCommand="-var-file=$INPUT_VARFILE"
 fi
 
